@@ -13,7 +13,7 @@ public class Profile {
 	private Date created;
 
 	public Profile() {
-
+		this.created = new Date();
 	}
 
 	public Profile(long id, String firstName, String lastName, String profileName) {

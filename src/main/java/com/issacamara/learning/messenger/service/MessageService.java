@@ -25,7 +25,15 @@ public class MessageService {
 	public List<Message> getAllMessages() {
 		return new ArrayList<>(messages.values());
 	}
-
+	
+	public List<Message> getAllMessagesForYear(int year) {
+		return new ArrayList<>(messages.values());
+	}
+	
+	public List<Message> getAllMessagesPaginated(int start, int size) {
+		return new ArrayList<>(messages.values());
+	}
+	
 	public Message getMessage(Long id) {
 		return messages.get(id);
 	}
