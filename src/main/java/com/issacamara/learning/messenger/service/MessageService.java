@@ -5,14 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 import com.issacamara.learning.messenger.database.DataBaseClass;
+import com.issacamara.learning.messenger.exception.DataNotFoundException;
 import com.issacamara.learning.messenger.model.Message;
 
 public class MessageService {
 
 	Map<Long, Message> messages = DataBaseClass.getMessages();
-	
-	
-	
+
 	public MessageService() {
 		Message m1 = new Message(1L, "Issa", "Hi Issa !");
 		Message m2 = new Message(2L, "Issa", "Hi Jordan !");
@@ -25,17 +24,21 @@ public class MessageService {
 	public List<Message> getAllMessages() {
 		return new ArrayList<>(messages.values());
 	}
-	
+
 	public List<Message> getAllMessagesForYear(int year) {
 		return new ArrayList<>(messages.values());
 	}
-	
+
 	public List<Message> getAllMessagesPaginated(int start, int size) {
 		return new ArrayList<>(messages.values());
 	}
-	
+
 	public Message getMessage(Long id) {
-		return messages.get(id);
+		Message m = messages.get(id);
+		if (m == null){
+			throw new DataNotFoundException("Message " + id + " not found");
+		}
+		return m;
 	}
 
 	public Message addMessage(Message m) {
